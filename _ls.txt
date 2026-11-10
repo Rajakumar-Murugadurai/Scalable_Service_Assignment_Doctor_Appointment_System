@@ -1,0 +1,19 @@
+total 64
+-rwxr-xr-x 1 rajakumar rajakumar  216 Nov 12  2025 ansible
+-rwxr-xr-x 1 rajakumar rajakumar  236 Nov 12  2025 ansible-community
+-rwxr-xr-x 1 rajakumar rajakumar  217 Nov 12  2025 ansible-config
+-rwxr-xr-x 1 rajakumar rajakumar  246 Nov 12  2025 ansible-connection
+-rwxr-xr-x 1 rajakumar rajakumar  218 Nov 12  2025 ansible-console
+-rwxr-xr-x 1 rajakumar rajakumar  214 Nov 12  2025 ansible-doc
+-rwxr-xr-x 1 rajakumar rajakumar  217 Nov 12  2025 ansible-galaxy
+-rwxr-xr-x 1 rajakumar rajakumar  220 Nov 12  2025 ansible-inventory
+-rwxr-xr-x 1 rajakumar rajakumar  219 Nov 12  2025 ansible-playbook
+-rwxr-xr-x 1 rajakumar rajakumar  215 Nov 12  2025 ansible-pull
+-rwxr-xr-x 1 rajakumar rajakumar 1700 Nov 12  2025 ansible-test
+-rwxr-xr-x 1 rajakumar rajakumar  216 Nov 12  2025 ansible-vault
+-rwxr-xr-x 1 rajakumar rajakumar  217 Aug 13 20:59 databricks
+-rwxr-xr-x 1 rajakumar rajakumar  234 Aug 13 20:59 dbfs
+-rwxr-xr-x 1 rajakumar rajakumar  212 Jun  4  2025 dotenv
+-rwxr-xr-x 1 rajakumar rajakumar  209 Aug 13 20:59 tabulate
+/home/rajakumar/.local/bin/minikube: cannot open `/home/rajakumar/.local/bin/minikube' (No such file or directory)
+bash: /home/rajakumar/.local/bin/minikube: No such file or directory

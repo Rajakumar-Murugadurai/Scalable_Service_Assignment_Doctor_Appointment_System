@@ -1,0 +1,4 @@
+-rwxr-xr-x 1 rajakumar rajakumar  56381592 Oct 25 09:35 /home/rajakumar/.local/bin/kubectl
+-rwxr-xr-x 1 rajakumar rajakumar 142610232 Oct 25 09:34 /home/rajakumar/.local/bin/minikube
+minikube version: v1.39.0
+commit: 7a9f6a841470a207de8cf4bafcccee0969d8ba10

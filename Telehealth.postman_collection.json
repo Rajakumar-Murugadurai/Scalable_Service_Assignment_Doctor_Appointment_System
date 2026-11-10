@@ -1,0 +1,80 @@
+{
+  "info": {
+    "name": "Telehealth Microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Doctor Service + Appointment Service API calls for SEZG583 assignment."
+  },
+  "variable": [
+    { "key": "doctorUrl", "value": "http://localhost:8001" },
+    { "key": "appointmentUrl", "value": "http://localhost:8002" }
+  ],
+  "item": [
+    {
+      "name": "Doctor Service",
+      "item": [
+        {
+          "name": "Create Doctor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{doctorUrl}}/doctors",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. Asha Rao\",\n  \"specialization\": \"Cardiology\",\n  \"email\": \"asha.rao@telehealth.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "List Doctors",
+          "request": { "method": "GET", "url": "{{doctorUrl}}/doctors" }
+        },
+        {
+          "name": "Add Availability",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{doctorUrl}}/doctors/1/availability",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"day\": \"2026-11-20\",\n  \"start_time\": \"10:00:00\",\n  \"end_time\": \"10:30:00\"\n}"
+            }
+          }
+        },
+        {
+          "name": "List Availability",
+          "request": { "method": "GET", "url": "{{doctorUrl}}/doctors/1/availability" }
+        }
+      ]
+    },
+    {
+      "name": "Appointment Service",
+      "item": [
+        {
+          "name": "Book Appointment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{appointmentUrl}}/appointments",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_name\": \"John Doe\",\n  \"patient_email\": \"john@example.com\",\n  \"doctor_id\": 1,\n  \"slot_id\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "List Appointments",
+          "request": { "method": "GET", "url": "{{appointmentUrl}}/appointments" }
+        },
+        {
+          "name": "Get Appointment",
+          "request": { "method": "GET", "url": "{{appointmentUrl}}/appointments/1" }
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": { "method": "DELETE", "url": "{{appointmentUrl}}/appointments/1" }
+        }
+      ]
+    }
+  ]
+}
+

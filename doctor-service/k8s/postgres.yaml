@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: doctor-db-config
+data:
+  DB_HOST: doctor-postgres
+  DB_PORT: "5432"
+  DB_NAME: doctordb
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: doctor-db-secret
+type: Opaque
+stringData:
+  DB_USER: postgres
+  DB_PASSWORD: postgres
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: doctor-postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctor-postgres
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: doctor-postgres
+  template:
+    metadata:
+      labels:
+        app: doctor-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: doctordb
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: doctor-db-secret
+                  key: DB_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: doctor-db-secret
+                  key: DB_PASSWORD
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pgdata
+          persistentVolumeClaim:
+            claimName: doctor-postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: doctor-postgres
+spec:
+  selector:
+    app: doctor-postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+
